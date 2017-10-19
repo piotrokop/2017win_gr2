@@ -13,3 +13,48 @@
 #Do your best, show off with good, clean, well structured code - this is more important than number of features.
 #After you finish, be sure to UPLOAD this (add, commit, push) to the remote repository.
 #Good Luck
+
+import numpy as np
+import time
+
+class flightSimulator():
+	def __init__(self):
+		self.angle = 0.0
+		self.angleStep = 0.5
+		self.delay = 0.1
+
+	def turnLeft(self):
+		self.angle -= self.angleStep
+
+	def turnRight(self):
+		self.angle += self.angleStep
+
+	def start(self):
+		while True:
+			self.makeTurbulations()
+			self.makeCorrection()
+			self.printOrientation()
+			time.sleep(self.delay)
+
+			# key = ord(getch())
+			# if key == 27: # ESC
+			# 	break
+			# elif key == 80:
+			# 	self.turnLeft()
+			# elif key == 72:
+			# 	self.turnRight()
+
+	def printOrientation(self):
+		print self.angleStep
+
+	def makeTurbulations(self):
+		self.angle += np.random.uniform(-20, 20)
+
+	def makeCorrection(self):
+		if self.angle > 0:
+			self.angle -= self.angleStep
+		else:
+			self.angle += self.angleStep
+
+fly = flightSimulator()
+fly.start()
