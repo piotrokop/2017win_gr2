@@ -45,10 +45,11 @@ class flightSimulator():
 			# 	self.turnRight()
 
 	def printOrientation(self):
-		print self.angleStep
+		print self.angle
 
 	def makeTurbulations(self):
-		self.angle += np.random.uniform(-20, 20)
+		self.angle += np.random.normal()
+		# self.angle += np.random.
 
 	def makeCorrection(self):
 		if self.angle > 0:
